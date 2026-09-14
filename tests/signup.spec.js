@@ -14,7 +14,7 @@ test('Sign up ',async({page})=>
 {
    
     const obj=new signuppage(page)
-    await obj.accessurl()
+    //await obj.accessurl()
     await obj.clickSignup()
     const username='user'+Date.now()            //to generate unique username np
     const password='pass'+Date.now()
@@ -29,12 +29,12 @@ test('Sign up ',async({page})=>
         await dialog.accept()
     })
 await obj.clickSignupbutton()
-
+ await expect(page).toHaveURL('https://www.demoblaze.com/')
 }
 )
 // 2. Sign Up -> Enter Data -> Click Close
 
-test.only('sign up and click close',async({page})=>
+test('sign up and click close',async({page})=>
 {
     const obj1=new signuppage(page)
     await obj1.accessurl()

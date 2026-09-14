@@ -250,3 +250,51 @@ test('login with valid credential and logout',async({page})=>
      await expect (page.locator('#signin2')).toBeVisible()
 })
 
+
+
+test('Verify Product Details',async({page})=>
+
+    {
+        await page.locator('#login2').click()
+    await page.locator('#loginusername').fill("shefeena")
+    await page.locator('#loginpassword').fill("shefeena123")
+    await page.locator('//button[text()="Log in"]').click()
+        await expect(page.getByText('Welcome shefeena')).toBeVisible()
+    await page.locator('//a[text()="Samsung galaxy s6"]').click()
+     await expect(page.locator('//h2[text()="Samsung galaxy s6"]')).toBeVisible()
+     await expect(page.locator('//h3[text()="$360"]')).toBeVisible()
+    await expect(page.locator('p').filter({ hasText: 'The Samsung Galaxy S6 is powered by 1.5GHz octa-core Samsung Exynos 7420' })).toBeVisible()
+    
+    }
+)
+
+test.only('Remove Product From Cart',async({page})=>
+{
+    await page.locator('#login2').click()
+    await page.locator('#loginusername').fill("shefeena")
+    await page.locator('#loginpassword').fill("shefeena123")
+    await page.locator('//button[text()="Log in"]').click()
+
+    await page.pause()
+    await page.locator('//a[text()="Monitors"]').click()
+    await page.pause()
+    await page.locator('//a[text()="ASUS Full HD"]').click()
+    await page.pause()
+    
+    page.on('dialog',async dialog=>
+        {
+        await page.pause()
+        console.log(dialog.message())
+         await expect(dialog.message()).toContain('Product added.')
+        await dialog.accept()
+        })
+    await page.locator('//a[text()="Add to cart"]').click()
+    await page.pause()
+
+    await page.locator('//a[text()="Cart"]').click()
+    await page.pause()
+    await page.locator('//a[text()="Delete"]').click()
+}
+
+
+)

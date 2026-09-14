@@ -29,10 +29,10 @@ class placeorderpage{
     await this.selectphonecategoryfield.click()
     return this
     }
-    async selectProduct()
+    async selectProduct(product)
     {
-       
-        await this.selectproductfield.click()
+       await this.page.locator(`//a[text()="${product}"]`).click()
+        //await this.page.locator('//a[text()="${product}"]').click()
         return this
     }
    
@@ -52,9 +52,22 @@ class placeorderpage{
     }
     async clickCart()
     {
+       
         await this.cartfield.click()
         return this
     }
+     async clearcart()
+        {
+           await this.clickCart()
+           const deletbutton=this.page.locator('//a[text()="Delete"]')
+           if(await deletbutton.count()>0)
+           {
+            await deletbutton.first().click()
+            
+           }
+           await this.page.getByText(" PRODUCT STORE").click()
+           return this
+        }
     async place_Order()
     {
         await this.placeorderfield.click()

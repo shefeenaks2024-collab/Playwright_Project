@@ -1,4 +1,4 @@
-const{test,expect}=require('@playwright/test')         //import playwright package
+/*const{test,expect}=require('@playwright/test')         //import playwright package
 
 test.beforeEach(async({page})=>
 {
@@ -298,3 +298,4 @@ test.only('Remove Product From Cart',async({page})=>
 
 
 )
+*/

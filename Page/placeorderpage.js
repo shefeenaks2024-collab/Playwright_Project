@@ -78,7 +78,7 @@ class placeorderpage{
         await this.namefield.fill("shefeena ks")
         await this.countryfield.fill("India")
         await this.cityfield.fill("Cochin")
-        await this.zipcodefield.fill('543234')
+        await this.zipcodefield.fill("543234")
         await this.monthfield.fill("January")
         await this.yearfield.fill("2026")
         return this

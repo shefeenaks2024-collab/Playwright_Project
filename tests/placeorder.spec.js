@@ -61,7 +61,7 @@ test('login and add product from phone  to cart and purchase', async ({ page }) 
 }
 )
 //9.Login with valid credentials -> Select a product under Monitors-> Add to Cart -> Click "ok" on the popup -> Add details -> Purchase
-test.only('login and add product  from Monitors  to cart and purchase', { timeout: 60000 }, async ({ page }) => {
+test('login and add product  from Monitors  to cart and purchase', { timeout: 60000 }, async ({ page }) => {
   let logobj2 = new loginpage(page)
   await logobj2.accessurl()
   await logobj2.clickOnLogin()
